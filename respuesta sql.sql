@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 -- 1 Devuelve todas las películasSELECT * FROM MOVIES m
 -- 2- Devuelve todos los géneros existentesSELECT * FROM GENRES--
  3- Devuelve la lista de todos los estudios de grabación que estén activosSELECT * FROM STUDIOS WHERE studio_active=1
  -- 4- Devuelve una lista de los 20 últimos miembros en anotarse a la plataformaSELECT * FROM USERS ORDER BY user_join_date DESC LIMIT 10
+=======
+-- 1 Devuelve todas las películas
+SELECT * FROM MOVIES m
+-- 2- Devuelve todos los géneros existentes
+SELECT * FROM GENRES--
+ --3- Devuelve la lista de todos los estudios de grabación que estén activos
+ SELECT * FROM STUDIOS WHERE studio_active=1
+ -- 4- Devuelve una lista de los 20 últimos miembros en anotarse a la plataforma
+ SELECT * FROM USERS ORDER BY user_join_date DESC LIMIT 10
+>>>>>>> ea9e7f1 ( acabo ejercicios)
  --5- Devuelve las 20 duraciones de películas más frecuentes, ordenados de mayor a menor
  SELECT movie_duration,COUNT(movie_id)AS "NUM_MOVIES" FROM MOVIES GROUP BY movie_duration ORDER BY NUM_MOVIES DESC LIMIT 20
  --6- Devuelve las películas del año 2000 en adelante que empiecen por la letra A.
