@@ -1,8 +1,4 @@
-<<<<<<< HEAD
--- 1 Devuelve todas las películasSELECT * FROM MOVIES m
--- 2- Devuelve todos los géneros existentesSELECT * FROM GENRES--
- 3- Devuelve la lista de todos los estudios de grabación que estén activosSELECT * FROM STUDIOS WHERE studio_active=1
- -- 4- Devuelve una lista de los 20 últimos miembros en anotarse a la plataformaSELECT * FROM USERS ORDER BY user_join_date DESC LIMIT 10
+
 =======
 -- 1 Devuelve todas las películas
 SELECT * FROM MOVIES m
@@ -12,7 +8,6 @@ SELECT * FROM GENRES--
  SELECT * FROM STUDIOS WHERE studio_active=1
  -- 4- Devuelve una lista de los 20 últimos miembros en anotarse a la plataforma
  SELECT * FROM USERS ORDER BY user_join_date DESC LIMIT 10
->>>>>>> ea9e7f1 ( acabo ejercicios)
  --5- Devuelve las 20 duraciones de películas más frecuentes, ordenados de mayor a menor
  SELECT movie_duration,COUNT(movie_id)AS "NUM_MOVIES" FROM MOVIES GROUP BY movie_duration ORDER BY NUM_MOVIES DESC LIMIT 20
  --6- Devuelve las películas del año 2000 en adelante que empiecen por la letra A.
@@ -81,7 +76,7 @@ SELECT * FROM GENRES--
  --31- Indica cuantos actores y directores hicieron películas para los estudios no activos
  SELECTCOUNT(DISTINCT m.DIRECTOR_ID ) AS "DIRECTOR_NUMBER",COUNT(DISTINCT MA.ACTOR_ID ) AS "ACTOR_NUMBER"FROM STUDIOS sINNER JOIN MOVIES mON S.STUDIO_ID =M.STUDIO_IDINNER JOIN MOVIES_ACTORS maON M.MOVIE_ID =MA.MOVIE_IDWHERE S.STUDIO_ACTIVE FALSE;
  --32-- Indica el nombre, ciudad, y teléfono de todos los miembros de la plataforma que hayan accedido películas que hayan sido nominadas a más de 150 premios y ganaran menos de 50
- SELECT DISTINCT U.USER_NAME , U.USER_TOWN U.USER_PHONEFROM USER_MOVIE_ACCESS umaINNER JOIN AWARDS A ON UMA.MOVIE_ID = A.MOVIE_IDINNER JOIN USERS u ON UMA.USER_ID =U.USER_IDWHERE A.AWARD_NOMINATION >150 AND A.AWARD_WIN <50;------------SELECT DISTINCT u.USER_NAME, u.USER_TOWN, u.USER_PHONE FROM USER_MOVIE_ACCESS uma INNER JOIN AWARDS a ON uma.MOVIE_ID = a.MOVIE_ID INNER JOIN USERS u ON uma.USER_ID = u.USER_ID WHERE a.AWARD_NOMINATION > 150 AND a.AWARD_WIN < 50;SELECT DISTINCT u.USER_NAME, u.USER_TOWN, u.USER_PHONE FROM USERS u INNER JOIN USER_MOVIE_ACCESS uma ON u.USER_ID = uma.USER_ID WHERE uma.MOVIE_ID IN (SELECT a.MOVIE_ID FROM AWARDS a WHERE a.AWARD_NOMINATION > 150 AND a.AWARD_WIN < 50);
+ SELECT DISTINCT U.USER_NAME , U.USER_TOWN U.USER_PHONEFROM USER_MOVIE_ACCESS umaINNER JOIN AWARDS A ON UMA.MOVIE_ID = A.MOVIE_IDINNER JOIN USERS u ON UMA.USER_ID =U.USER_IDWHERE A.AWARD_NOMINATION >150 AND A.AWARD_WIN <50; SELECT DISTINCT u.USER_NAME, u.USER_TOWN, u.USER_PHONE FROM USER_MOVIE_ACCESS uma INNER JOIN AWARDS a ON uma.MOVIE_ID = a.MOVIE_ID INNER JOIN USERS u ON uma.USER_ID = u.USER_ID WHERE a.AWARD_NOMINATION > 150 AND a.AWARD_WIN < 50;SELECT DISTINCT u.USER_NAME, u.USER_TOWN, u.USER_PHONE FROM USERS u INNER JOIN USER_MOVIE_ACCESS uma ON u.USER_ID = uma.USER_ID WHERE uma.MOVIE_ID IN (SELECT a.MOVIE_ID FROM AWARDS a WHERE a.AWARD_NOMINATION > 150 AND a.AWARD_WIN < 50);
  --33- Comprueba si hay errores en la BD entre las películas y directores (un director muerto en el 76 no puede dirigir una película en el 88)
  SELECT d.DIRECTOR_NAME, d.DIRECTOR_DEAD_DATE, MAX(m.MOVIE_RELEASE_DATE) AS MOVIE_RELEASE_DATE FROM MOVIES m INNER JOIN DIRECTORS d ON m.DIRECTOR_ID = d.DIRECTOR_ID WHERE m.MOVIE_RELEASE_DATE > d.DIRECTOR_DEAD_DATE GROUP BY d.DIRECTOR_ID;
  --34- Utilizando la información de la sentencia anterior, modifica la fecha de defunción a un año más tarde del estreno de la película (mediante sentencia SQL)
